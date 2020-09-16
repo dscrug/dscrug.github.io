@@ -14,13 +14,13 @@ Duration: 6
 In this codelab you'll learn the basic "Hello World" of machine learning where, instead of programming explicit rules in a language such as Java or C++, you'll build a system that is trained on data to infer the rules that determine a relationship between numbers.
 
 Consider the following problem: You're building a system that performs activity recognition for fitness tracking. You might have access to the speed at which a person is moving, and attempt to infer their activity based on this speed using a conditional:
-![]("https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/370d46b8749f7dd6.png")
+![](assets/1.1.png)
 ```python
 if speed < 4: 
   status = WALKING
 ```
 You could extend this to running with another condition:
-![]("https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/8029f629d86974c3.png")
+![](assets/1.2.png)
 ```python
 if speed < 4: 
   status = WALKING
@@ -28,7 +28,7 @@ else:
   status = RUNNING
 ```
 In a final condition you could similarly detect cycling:
-![]("https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/76f49f6c4f08722a.png")
+![](assets/1.3.png)
 ```python
 if speed < 4: 
   status = WALKING
@@ -38,7 +38,7 @@ else
   status = BIKING
 ```
 Now consider what happens when you want to include an activity like golf? Suddenly it's less obvious how to create a rule to determine the activity.
-![]("https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/6a1a151369674472.png")
+![](assets/1.4.png")
 ```python
 # Now what?? :(
 ```

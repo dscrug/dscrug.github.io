@@ -30,17 +30,17 @@
       <google-codelab-step label="Introduction" duration="6">
         <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
 <p>In this codelab you&#39;ll learn the basic &#34;Hello World&#34; of machine learning where, instead of programming explicit rules in a language such as Java or C++, you&#39;ll build a system that is trained on data to infer the rules that determine a relationship between numbers.</p>
-<p>Consider the following problem: You&#39;re building a system that performs activity recognition for fitness tracking. You might have access to the speed at which a person is moving, and attempt to infer their activity based on this speed using a conditional: ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/370d46b8749f7dd6.png&#34;)</p>
+<p>Consider the following problem: You&#39;re building a system that performs activity recognition for fitness tracking. You might have access to the speed at which a person is moving, and attempt to infer their activity based on this speed using a conditional: <img src="img/370d46b8749f7dd6.png"></p>
 <pre><code>if speed &lt; 4: 
   status = WALKING
 </code></pre>
-<p>You could extend this to running with another condition: ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/8029f629d86974c3.png&#34;)</p>
+<p>You could extend this to running with another condition: <img src="img/8029f629d86974c3.png"></p>
 <pre><code>if speed &lt; 4: 
   status = WALKING
 else:
   status = RUNNING
 </code></pre>
-<p>In a final condition you could similarly detect cycling: ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/76f49f6c4f08722a.png&#34;)</p>
+<p>In a final condition you could similarly detect cycling: <img src="img/76f49f6c4f08722a.png"></p>
 <pre><code>if speed &lt; 4: 
   status = WALKING
 else if speed &lt; 12:
@@ -48,7 +48,7 @@ else if speed &lt; 12:
 else
   status = BIKING
 </code></pre>
-<p>Now consider what happens when you want to include an activity like golf? Suddenly it&#39;s less obvious how to create a rule to determine the activity. ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/6a1a151369674472.png&#34;)</p>
+<p>Now consider what happens when you want to include an activity like golf? Suddenly it&#39;s less obvious how to create a rule to determine the activity. <img src="img/6a1a151369674472.png"></p>
 <pre><code># Now what?? :(
 </code></pre>
 <p>It&#39;s extremely difficult to write a program (expressed in code) that will give us the golfing activity. So what do you do? That&#39;s where machine learning can be used to solve the problem! </p>
