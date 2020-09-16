@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>How to Write a Codelab</title>
+  <title>TensorFlow 1 : The &#34;Hello World!&#34; of Machine Learning</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
@@ -23,19 +23,35 @@
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
                   id="how-to-write-a-codelab"
-                  title="How to Write a Codelab"
+                  title="TensorFlow 1 : The &#34;Hello World!&#34; of Machine Learning"
                   environment="web"
                   feedback-link="https://vtoie.com">
     
-      <google-codelab-step label="Overview" duration="1">
+      <google-codelab-step label="Introduction" duration="6">
         <h2 class="checklist" is-upgraded>What You&#39;ll Learn</h2>
-<ul>
-<li>how to set the amount of time each slide will take to finish</li>
-<li>how to include code snippets</li>
-<li>how to hyperlink items</li>
-<li>how to include images</li>
-<li>other stuff</li>
-</ul>
+<p>In this codelab you&#39;ll learn the basic &#34;Hello World&#34; of machine learning where, instead of programming explicit rules in a language such as Java or C++, you&#39;ll build a system that is trained on data to infer the rules that determine a relationship between numbers.</p>
+<p>Consider the following problem: You&#39;re building a system that performs activity recognition for fitness tracking. You might have access to the speed at which a person is moving, and attempt to infer their activity based on this speed using a conditional: ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/370d46b8749f7dd6.png&#34;)</p>
+<pre><code>if speed &lt; 4: 
+  status = WALKING
+</code></pre>
+<p>You could extend this to running with another condition: ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/8029f629d86974c3.png&#34;)</p>
+<pre><code>if speed &lt; 4: 
+  status = WALKING
+else:
+  status = RUNNING
+</code></pre>
+<p>In a final condition you could similarly detect cycling: ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/76f49f6c4f08722a.png&#34;)</p>
+<pre><code>if speed &lt; 4: 
+  status = WALKING
+else if speed &lt; 12:
+  status = RUNNING
+else
+  status = BIKING
+</code></pre>
+<p>Now consider what happens when you want to include an activity like golf? Suddenly it&#39;s less obvious how to create a rule to determine the activity. ![](&#34;https://codelabs.developers.google.com/codelabs/tensorflow-lab1-helloworld/img/6a1a151369674472.png&#34;)</p>
+<pre><code># Now what?? :(
+</code></pre>
+<p>It&#39;s extremely difficult to write a program (expressed in code) that will give us the golfing activity. So what do you do? That&#39;s where machine learning can be used to solve the problem! </p>
 
 
       </google-codelab-step>
