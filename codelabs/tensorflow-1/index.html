@@ -22,12 +22,12 @@
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
-                  id="how-to-write-a-codelab"
+                  id="tensorflow-1"
                   title="TensorFlow 1 : The &#34;Hello World!&#34; of Machine Learning"
                   environment="web"
-                  feedback-link="https://vtoie.com">
+                  feedback-link="https://discord.com/invite/52amuPv">
     
-      <google-codelab-step label="Introduction" duration="6">
+      <google-codelab-step label="Introduction" duration="5">
         <h2 is-upgraded>What We&#39;ll Learn</h2>
 <p>In this codelab we&#39;ll learn the basic &#34;Hello World&#34; of machine learning where, instead of programming explicit rules in a language such as Java or C++, we&#39;ll build a system that is trained on data to infer the rules that determine a relationship between numbers.</p>
 <p>Consider the following problem: You&#39;re building a system that performs activity recognition for fitness tracking. You might have access to the speed at which a person is moving, and attempt to infer their activity based on this speed using a conditional:</p>
@@ -68,21 +68,21 @@ else
 <p>The process for detecting this activity status via Machine Learning is very similar – only the axes are different:</p>
 <p class="image-container"><img alt="Machine Learning" src="img/d55ecc03b6c7b637.png"></p>
 <p>Instead of trying to define the rules and express them in a programming language, you provide the answers (typically called labels) along with the data, and the machine will infer the rules that determine the relationship between the answers and the data. For example, our activity detection scenario might look like this in a machine learning context:</p>
-<p class="image-container"><img alt="Machine Learning" src="img/6ff58697a85931f4.png"></p>
+<p class="image-container"><img alt="Walking/Running/Biking/Golfing" src="img/6ff58697a85931f4.png"></p>
 <p>We gather lots of data, and label it to effectively say &#34;This is what walking looks like&#34;, &#34;This is what running looks like&#34; etc. Then, the computer can infer the rules that determine, from the data, what the distinct patterns that denote a particular activity are.</p>
 <p>Beyond being an alternative method to programming this scenario, this also gives you the ability to open up new scenarios, such as the golfing one that may not have been possible under the rules-based traditional programming approach.</p>
 <p>In traditional programming your code compiles into a binary that is typically called a program. In machine learning, the item you create from the data and labels is called a model.</p>
 <p>So if we go back to this diagram:</p>
-<p class="image-container"><img alt="Machine Learning" src="img/53ff9e2cb511936e.png"></p>
+<p class="image-container"><img alt="Machine Learning" src="img/d55ecc03b6c7b637.png"></p>
 <p>Consider the result of this to be a model, which at runtime is used like this:</p>
-<p class="image-container"><img alt="Machine Learning" src="img/693430bb4d7fa001.png"></p>
+<p class="image-container"><img alt="Model" src="img/693430bb4d7fa001.png"></p>
 <p>You will pass the model some data, and the model will use the rules it inferred from the training to come up with a prediction – i.e. &#34;That data looks like walking&#34;, &#34;That data looks like biking&#34; etc.</p>
 <p>In the next section we&#39;ll start coding, building a very simple &#34;Hello World&#34; model which will have most of the building blocks that can be used in any Machine Learning Scenario! </p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Before we start" duration="3">
+      <google-codelab-step label="Before we start" duration="5">
         <p>In the next sections we&#39;ll create a very simple machine learned model that determines patterns in a set of data using machine learning techniques and a neural network.</p>
 <p>If you&#39;ve never created a Machine Learning model using TensorFlow, I&#39;d strongly recommend you use Google Colaboratory, a browser-based environment that contains all the required dependencies. You can find the code for the rest of <a href="https://colab.research.google.com/drive/13dqhjWcDJ-nM9Rj8wdrcWTW_OKVE7F_b" target="_blank">this lab running in a Colab</a>.</p>
 <p>Otherwise, the main language you will use for training models is Python, so you will need to have that installed. In addition to that you&#39;ll also need TensorFlow. Details on installing it are <a href="https://www.tensorflow.org/install" target="_blank">here</a>. You&#39;ll also need the <a href="https://numpy.org/install/" target="_blank">numpy</a> library.</p>
@@ -133,8 +133,37 @@ ys = np.array([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], dtype=float)
 
       </google-codelab-step>
     
-      <google-codelab-step label="Training the neural network" duration="1">
-        
+      <google-codelab-step label="Training the neural network" duration="5">
+        <p>The process of training the neural network, where it ‘learns&#39; the relationship between the Xs and Ys is in the <code>model.fit</code> call. This is where it will go through the loop we spoke about before:aking a guess, measuring how good or bad it is (aka the loss), using the optimizer to make another guess etc. It will do it for the number of epochs you specify. When you run this code, you&#39;ll see the loss will be printed out for each epoch.</p>
+<pre><code>model.fit(xs, ys, epochs=500)
+</code></pre>
+<p>So, for example, you can see here that for the first few epochs, the loss value is quite large, but it&#39;s getting smaller with each step:</p>
+<p class="image-container"><img alt="First epochs" src="img/3b8cf19a801f2b5a.png"></p>
+<p>As the training progresses, the loss soon gets very small:</p>
+<p class="image-container"><img alt="More epochs" src="img/e3cc4dfc27e1c6f2.png"></p>
+<p>And by the time the training is done, the loss is extremely small, showing that our model is doing a great job of inferring the relationship between the numbers:</p>
+<p class="image-container"><img alt="Final epochs" src="img/b6aa4518dd3d9899.png"></p>
+<p>You probably don&#39;t need all 500 epochs, and can experiment with different amounts, but as you can see from this example the loss is really small after only 50 epochs, so that might be enough!</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Using the model" duration="5">
+        <p>Ok, now you have a model that has been trained to learn the relationship between X and Y. You can use the <code>model.predict</code> method to have it figure out the Y for a previously unknown X. So, for example, if X = 10, what do you think Y will be? Take a guess before you run this code:</p>
+<pre><code>print(model.predict([10.0]))
+</code></pre>
+<p>You might have thought 31, right? But it ended up being a little over. Why do you think that is?</p>
+<p>Neural networks deal with probabilities, so given the data that we fed the NN with, it calculated that there is a very high probability that the relationship between X and Y is Y=3X+1, but with only 6 data points we can&#39;t know for sure. As a result, the result for 10 is very close to 31, but not necessarily 31.</p>
+<p>As you work with neural networks, you&#39;ll see this pattern recurring. You will almost always deal with probabilities, not certainties, and will do a little bit of coding to figure out what the result is based on the probabilities, particularly when it comes to classification.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next steps" duration="5">
+        <p>Believe it or not, you&#39;ve actually already covered most of the concepts in machine learning that you&#39;ll use in far more complex scenarios. In this lab you saw how to train a neural network to spot the relationship between two sets of numbers by defining the network. You defined a set of layers (in this case just 1) that contained neurons (also in this case, just 1), which you then compiled with a loss function and an optimizer.</p>
+<p>This collection of a network, loss function, and optimizer handles the process of guessing the relationship between the numbers, measuring how well they did, and then generating new parameters for new guesses. As you&#39;ll see in the other TensorFlow labs, this process is almost identical to what you&#39;ll use for far more complicated scenarios!</p>
+<p>You can also learn more at <a href="https://www.tensorflow.org/" target="_blank">TensorFlow.org</a></p>
+
 
       </google-codelab-step>
     

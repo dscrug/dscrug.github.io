@@ -1,14 +1,14 @@
-summary: How to Write a Codelab
-id: how-to-write-a-codelab
-categories: Sample
-tags: first
+summary: TensorFlow 1
+id: tensorflow-1
+categories: TensorFlow
+tags: workshop
 status: Published 
 authors: Vlad
-Feedback Link: https://vtoie.com
+Feedback Link: https://discord.com/invite/52amuPv
 
 # TensorFlow 1 : The "Hello World!" of Machine Learning
 ## Introduction 
-Duration: 6
+Duration: 5
 
 ### What We'll Learn 
 In this codelab we'll learn the basic "Hello World" of machine learning where, instead of programming explicit rules in a language such as Java or C++, we'll build a system that is trained on data to infer the rules that determine a relationship between numbers.
@@ -65,7 +65,7 @@ The process for detecting this activity status via Machine Learning is very simi
 
 Instead of trying to define the rules and express them in a programming language, you provide the answers (typically called labels) along with the data, and the machine will infer the rules that determine the relationship between the answers and the data. For example, our activity detection scenario might look like this in a machine learning context:
 
-![Machine Learning](assets/2.3.png)
+![Walking/Running/Biking/Golfing](assets/2.3.png)
 
 We gather lots of data, and label it to effectively say "This is what walking looks like", "This is what running looks like" etc. Then, the computer can infer the rules that determine, from the data, what the distinct patterns that denote a particular activity are.
 
@@ -75,18 +75,18 @@ In traditional programming your code compiles into a binary that is typically ca
 
 So if we go back to this diagram:
 
-![Machine Learning](assets/2.4.png)
+![Machine Learning](assets/2.2.png)
 
 Consider the result of this to be a model, which at runtime is used like this:
 
-![Machine Learning](assets/2.5.png)
+![Model](assets/2.5.png)
 
 You will pass the model some data, and the model will use the rules it inferred from the training to come up with a prediction -- i.e. "That data looks like walking", "That data looks like biking" etc.
 
 In the next section we'll start coding, building a very simple "Hello World" model which will have most of the building blocks that can be used in any Machine Learning Scenario!
 <!-- ------------------------ -->
 ## Before we start
-Duration: 3
+Duration: 5
 
 In the next sections we'll create a very simple machine learned model that determines patterns in a set of data using machine learning techniques and a neural network.
 
@@ -172,4 +172,50 @@ ys = np.array([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], dtype=float)
 You've now written all of the code you need to define the neural network. The next step will be to train it to see if it can infer the patterns between these numbers and use those to create a model.
 <!-- ------------------------ -->
 ## Training the neural network
-Duration: 1
+Duration: 5
+
+The process of training the neural network, where it 'learns' the relationship between the Xs and Ys is in the `model.fit` call. This is where it will go through the loop we spoke about before:aking a guess, measuring how good or bad it is (aka the loss), using the optimizer to make another guess etc. It will do it for the number of epochs you specify. When you run this code, you'll see the loss will be printed out for each epoch.
+
+```python
+model.fit(xs, ys, epochs=500)
+```
+
+So, for example, you can see here that for the first few epochs, the loss value is quite large, but it's getting smaller with each step:
+
+![First epochs](assets/5.1.png)
+
+As the training progresses, the loss soon gets very small:
+
+![More epochs](assets/5.2.png)
+
+And by the time the training is done, the loss is extremely small, showing that our model is doing a great job of inferring the relationship between the numbers:
+
+![Final epochs](assets/5.3.png)
+
+You probably don't need all 500 epochs, and can experiment with different amounts, but as you can see from this example the loss is really small after only 50 epochs, so that might be enough!
+
+<!-- ------------------------ -->
+## Using the model
+Duration: 5
+
+Ok, now you have a model that has been trained to learn the relationship between X and Y. You can use the `model.predict` method to have it figure out the Y for a previously unknown X. So, for example, if X = 10, what do you think Y will be? Take a guess before you run this code:
+
+```python
+print(model.predict([10.0]))
+```
+
+You might have thought 31, right? But it ended up being a little over. Why do you think that is?
+
+Neural networks deal with probabilities, so given the data that we fed the NN with, it calculated that there is a very high probability that the relationship between X and Y is Y=3X+1, but with only 6 data points we can't know for sure. As a result, the result for 10 is very close to 31, but not necessarily 31.
+
+As you work with neural networks, you'll see this pattern recurring. You will almost always deal with probabilities, not certainties, and will do a little bit of coding to figure out what the result is based on the probabilities, particularly when it comes to classification.
+
+<!-- ------------------------ -->
+## Next steps
+Duration: 5
+
+Believe it or not, you've actually already covered most of the concepts in machine learning that you'll use in far more complex scenarios. In this lab you saw how to train a neural network to spot the relationship between two sets of numbers by defining the network. You defined a set of layers (in this case just 1) that contained neurons (also in this case, just 1), which you then compiled with a loss function and an optimizer.
+
+This collection of a network, loss function, and optimizer handles the process of guessing the relationship between the numbers, measuring how well they did, and then generating new parameters for new guesses. As you'll see in the other TensorFlow labs, this process is almost identical to what you'll use for far more complicated scenarios!
+
+You can also learn more at [TensorFlow.org](https://www.tensorflow.org/)

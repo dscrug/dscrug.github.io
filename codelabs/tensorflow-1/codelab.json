@@ -3,23 +3,23 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-09-17T21:54:23+02:00",
-  "id": "how-to-write-a-codelab",
-  "duration": 40,
+  "updated": "2020-09-17T22:15:20+02:00",
+  "id": "tensorflow-1",
+  "duration": 55,
   "title": "TensorFlow 1 : The \"Hello World!\" of Machine Learning",
   "authors": "Vlad",
-  "summary": "How to Write a Codelab",
-  "source": "how-to-write-a-codelab.md",
+  "summary": "TensorFlow 1",
+  "source": "tensorflow-1.md",
   "theme": "",
   "status": [
     "published"
   ],
   "category": [
-    "sample"
+    "tensorflow"
   ],
   "tags": [
-    "first"
+    "workshop"
   ],
-  "feedback": "https://vtoie.com",
-  "url": "how-to-write-a-codelab"
+  "feedback": "https://discord.com/invite/52amuPv",
+  "url": "tensorflow-1"
 }
