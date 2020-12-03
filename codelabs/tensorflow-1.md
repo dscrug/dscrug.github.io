@@ -15,14 +15,14 @@ In this codelab we'll learn the basic "Hello World" of machine learning where, i
 
 Consider the following problem: You're building a system that performs activity recognition for fitness tracking. You might have access to the speed at which a person is moving, and attempt to infer their activity based on this speed using a conditional:
 
-![walking](assets/1.1.png)
+![walking](tensorflow-1-assets/1.1.png)
 ```python
 if speed < 4: 
   status = WALKING
 ```
 We could extend this to running with another condition:
 
-![running](assets/1.2.png)
+![running](tensorflow-1-assets/1.2.png)
 ```python
 if speed < 4: 
   status = WALKING
@@ -31,7 +31,7 @@ else:
 ```
 In a final condition we could similarly detect cycling:
 
-![biking](assets/1.3.png)
+![biking](tensorflow-1-assets/1.3.png)
 ```python
 if speed < 4: 
   status = WALKING
@@ -42,7 +42,7 @@ else
 ```
 Now consider what happens when we want to include an activity like golf? Suddenly it's less obvious how to create a rule to determine the activity.
 
-![golfing](assets/1.4.png")
+![golfing](tensorflow-1-assets/1.4.png")
 ```python
 # Now what?? :(
 ```
@@ -55,17 +55,17 @@ In the previous section you saw a problem where, when trying to determine the fi
 
 Consider building applications in the traditional manner as represented in the following diagram:
 
-![Traditional Programming](assets/2.1.png)
+![Traditional Programming](tensorflow-1-assets/2.1.png)
 
 You express rules in a programming language. These act on data and your program provides answers. In the case of the activity detection, the rules (the code you wrote to define types of activities) acted upon the data (the person's movement speed) in order to find an answer -- the return value from the function for determining the activity status of the user (whether they were walking, running, biking, etc.).
 
 The process for detecting this activity status via Machine Learning is very similar -- only the axes are different: 
 
-![Machine Learning](assets/2.2.png)
+![Machine Learning](tensorflow-1-assets/2.2.png)
 
 Instead of trying to define the rules and express them in a programming language, you provide the answers (typically called labels) along with the data, and the machine will infer the rules that determine the relationship between the answers and the data. For example, our activity detection scenario might look like this in a machine learning context:
 
-![Walking/Running/Biking/Golfing](assets/2.3.png)
+![Walking/Running/Biking/Golfing](tensorflow-1-assets/2.3.png)
 
 We gather lots of data, and label it to effectively say "This is what walking looks like", "This is what running looks like" etc. Then, the computer can infer the rules that determine, from the data, what the distinct patterns that denote a particular activity are.
 
@@ -75,11 +75,11 @@ In traditional programming your code compiles into a binary that is typically ca
 
 So if we go back to this diagram:
 
-![Machine Learning](assets/2.2.png)
+![Machine Learning](tensorflow-1-assets/2.2.png)
 
 Consider the result of this to be a model, which at runtime is used like this:
 
-![Model](assets/2.5.png)
+![Model](tensorflow-1-assets/2.5.png)
 
 You will pass the model some data, and the model will use the rules it inferred from the training to come up with a prediction -- i.e. "That data looks like walking", "That data looks like biking" etc.
 
@@ -182,15 +182,15 @@ model.fit(xs, ys, epochs=500)
 
 So, for example, you can see here that for the first few epochs, the loss value is quite large, but it's getting smaller with each step:
 
-![First epochs](assets/5.1.png)
+![First epochs](tensorflow-1-assets/5.1.png)
 
 As the training progresses, the loss soon gets very small:
 
-![More epochs](assets/5.2.png)
+![More epochs](tensorflow-1-assets/5.2.png)
 
 And by the time the training is done, the loss is extremely small, showing that our model is doing a great job of inferring the relationship between the numbers:
 
-![Final epochs](assets/5.3.png)
+![Final epochs](tensorflow-1-assets/5.3.png)
 
 You probably don't need all 500 epochs, and can experiment with different amounts, but as you can see from this example the loss is really small after only 50 epochs, so that might be enough!
 
